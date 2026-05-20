@@ -1,17 +1,31 @@
 package org.example.restful_api.model;
 
+import jakarta.persistence.*;
+
+@Entity
+@Table(name = "tasks")
 public class Task {
 
-    private int id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column(nullable = false)
     private String title;
+
     private String description;
+
+    @Column(nullable = false)
     private String priority;
-    private int assignedTo;
+
+    @Column(nullable = false)
+    private Long assignedTo;
 
     public Task() {
     }
 
-    public Task(int id, String title, String description, String priority, int assignedTo) {
+    public Task(Long id, String title, String description,
+                String priority, Long assignedTo) {
         this.id = id;
         this.title = title;
         this.description = description;
@@ -19,11 +33,11 @@ public class Task {
         this.assignedTo = assignedTo;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -51,11 +65,11 @@ public class Task {
         this.priority = priority;
     }
 
-    public int getAssignedTo() {
+    public Long getAssignedTo() {
         return assignedTo;
     }
 
-    public void setAssignedTo(int assignedTo) {
+    public void setAssignedTo(Long assignedTo) {
         this.assignedTo = assignedTo;
     }
 }

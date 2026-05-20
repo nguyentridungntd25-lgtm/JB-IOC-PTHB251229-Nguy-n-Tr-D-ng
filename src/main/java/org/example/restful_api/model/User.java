@@ -1,27 +1,40 @@
 package org.example.restful_api.model;
 
+import jakarta.persistence.*;
+
+@Entity
+@Table(name = "users")
 public class User {
 
-    private int id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column(nullable = false, length = 100)
     private String username;
+
+    @Column(nullable = false)
     private String email;
+
+    @Column(nullable = false)
     private String role;
 
     public User() {
     }
 
-    public User(int id, String username, String email, String role) {
+    public User(Long id, String username,
+                String email, String role) {
         this.id = id;
         this.username = username;
         this.email = email;
         this.role = role;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
